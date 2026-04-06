@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎<title>Ife mi's Page</title>
+‎<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+‎<style>
+‎/* CSS VARIABLES (THEME) */
+‎:root {
+‎  --primary-color: #ff4081;
+‎  --primary-dark: #e73370;
+‎  --bg-primary: #f4f4f4;
+‎  --bg-secondary: rgba(255,255,255,0.95);
+‎  --text-primary: #333;
+‎  --text-secondary: #666;
+‎  --accent: #ff6b9d;
+‎  --transition: 0.3s;
+‎}
+‎
+‎html.dark-mode {
+‎  --bg-primary: #1a1a1a;
+‎  --bg-secondary: rgba(30,30,30,0.95);
+‎  --text-primary: #f0f0f0;
+‎  --text-secondary: #b0b0b0;
+‎}
+‎
+‎/* Reset & Fonts */
+‎*{margin:0;padding:0;box-sizing:border-box;}
+‎body{font-family:'Poppins',sans-serif;background:var(--bg-primary);scroll-behavior:smooth;color:var(--text-primary);transition:background var(--transition), color var(--transition);}
+‎h1,h2{font-family:'Playfair Display', serif;}
+‎a{text-decoration:none;color:inherit;}
+‎
+‎/* Navbar */
+‎nav{position:fixed;top:0;width:100%;background:var(--bg-secondary);display:flex;justify-content:space-between;align-items:center;padding:15px 20px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000;transition:background var(--transition);}
+‎.nav-center{display:flex;justify-content:center;gap:25px;}
+‎nav a{font-weight:600;transition:color var(--transition);}
+‎nav a:hover, nav a:focus{color:var(--primary-color);}
+‎
+‎.theme-toggle, .hamburger {background:none;border:2px solid var(--primary-color);color:var(--primary-color);cursor:pointer;padding:8px 12px;border-radius:20px;font-size:14px;font-weight:600;transition:all var(--transition);}
+‎.theme-toggle:hover, .hamburger:hover, .theme-toggle:focus, .hamburger:focus{background:var(--primary-color);color:var(--bg-primary);}
+‎.hamburger{display:none;flex-direction:column;gap:5px;}
+‎.hamburger span{width:25px;height:3px;background:var(--primary-color);border-radius:2px;transition:all 0.3s;}
+‎
+‎/* Hero */
+‎#home{height:100vh;background:linear-gradient(135deg, rgba(255,107,157,0.05) 0%, rgba(255,64,129,0.05) 100%);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background-attachment:fixed;}
+‎#home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+‎#home::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);}
+‎#home .hero-content{position:relative;max-width:800px;animation:slideInDown 0.8s ease-out;}
+‎#home h1{font-size:4rem;margin-bottom:15px;animation:slideInUp 0.8s ease-out 0.2s backwards;}
+‎#home p{font-size:1.2rem;margin-bottom:30px;animation:slideInUp 0.8s ease-out 0.4s backwards;}
+‎#home a{padding:12px 30px;background:#fff;color:var(--primary-color);border-radius:50px;font-weight:600;transition:all var(--transition);display:inline-block;animation:slideInUp 0.8s ease-out 0.6s backwards;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+‎#home a:hover, #home a:focus{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+‎
+‎/* Sections */
+‎section{padding:100px 20px;max-width:1200px;margin:0 auto;position:relative;animation:fadeIn 0.8s ease-out;}
+‎section h2{text-align:center;font-size:2.5rem;margin-bottom:50px;color:var(--text-primary);position:relative;}
+‎section h2::after{content:'';width:80px;height:3px;background:var(--primary-color);display:block;margin:10px auto 0;border-radius:2px;}
+‎
+‎/* About */
+‎#about p{max-width:700px;margin:0 auto;text-align:center;font-size:1.1rem;line-height:1.8;color:var(--text-secondary);}
+‎
+‎/* Footer */
+‎footer{text-align:center;padding:30px;background:#333;color:#fff;transition:background var(--transition);}
+‎
+‎/* Floating Panel */
+‎#floating-panel{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:150;}
+‎.floating-btn{background:var(--primary-color);color:#fff;border:none;border-radius:50px;padding:12px 20px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px;transition:all var(--transition);box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+‎.floating-btn:hover, .floating-btn:focus{background:var(--primary-dark);transform:scale(1.1);}
+‎.floating-btn img{width:24px;height:24px;}
+‎
+‎/* Animations */
+‎@keyframes slideInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+‎@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+‎
+‎/* Accessibility */
+‎a:focus, button:focus{outline:2px solid var(--primary-color);outline-offset:2px;}
+‎.skip-to-content{position:absolute;top:-40px;left:0;background:var(--primary-color);color:#fff;padding:8px;text-decoration:none;z-index:100;}
+‎.skip-to-content:focus{top:0;}
+‎
+‎/* Mobile Responsiveness */
+‎@media (max-width: 768px) {
+‎  nav{flex-direction:row;}
+‎  .nav-center{position:absolute;top:60px;right:0;flex-direction:column;background:var(--bg-secondary);padding:20px;border-radius:0 0 16px 0;gap:15px;display:none;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);}
+‎  .nav-center.active{display:flex;}
+‎  .hamburger{display:flex;}
+‎  #home h1{font-size:2.5rem;}
+‎  #home p{font-size:1rem;}
+‎  section{padding:80px 15px;}
+‎  section h2{font-size:2rem;}
+‎}
+‎
+‎@media (max-width: 480px) {
+‎  header{padding:12px 3%;}
+‎  #home h1{font-size:1.8rem;}
+‎  #home p{font-size:0.95rem;}
+‎  #home a{padding:10px 20px;font-size:0.9rem;}
+‎  section{padding:60px 3%;}
+‎  section h2{font-size:1.5rem;}
+‎  nav a{font-size:0.9rem;}
+‎  .floating-btn{padding:10px 15px;font-size:0.85rem;}
+‎}
+‎</style>
+‎</head>
+‎<body>
+‎
+‎<!-- Skip to content link -->
+‎<a href="#main-content" class="skip-to-content">Skip to main content</a>
+‎
+‎<!-- Navbar -->
+‎<nav role="navigation" aria-label="Main navigation">
+‎<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+‎<span></span><span></span><span></span>
+‎</button>
+‎<div class="nav-center" id="nav-menu">
+‎<a href="#home">Home</a>
+‎<a href="#about">About</a>
+‎</div>
+‎<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
+‎</nav>
+‎
+‎<!-- Hero -->
+‎<section id="home" id="main-content" role="banner">
+‎<video autoplay muted loop>
+‎<source src="HERO_VIDEO.mp4" type="video/mp4">
+‎</video>
+‎<div class="hero-content">
+‎<h1>Zinni</h1>
+‎<p>My Favourite Person.</p>
+‎<a href="#about">Learn More</a>
+‎</div>
+‎</section>
+‎
+‎<!-- About -->
+‎<section id="about" role="region" aria-labelledby="about-title">
+‎<h2 id="about-title">To my sweetheart</h2>
+‎<p>Hey! my sweetheart <strong>Ife mi</strong>, Happy birthday, my baby girl ❤️
+‎
+‎I don’t even know where to start because words honestly feel too small for what I feel for you. But today is your day, so let me try…
+‎
+‎You came into my life and made everything softer, brighter, and somehow more meaningful. The way you smile, the way you talk, even the little things you do without thinking they all stay on my mind longer than you probably realize. You’re not just special… you’re my special, and that means everything to me.
+‎
+‎I’m so grateful for you. For your love, your energy, your presence. You make my days better just by existing, and I mean that in the realest way. Even on your quiet days, even when you think you’re not doing much you’re still someone I’m thankful for every single day.
+‎
+‎Today, I just want you to feel how loved you truly are. I hope you’re smiling more than usual, laughing more than usual, and feeling like the queen that you are. You deserve all the happiness in the world, all the peace, all the success, and all the love your heart can carry.
+‎
+‎I pray this new year of your life brings you closer to your dreams, fills your heart with joy, and gives you reasons to wake up excited every single day. And through it all, I want you to know I’m right here with you, for you, always.
+‎
+‎You’re beautiful, you’re amazing, you’re one of a kind… and you’re mine ❤️
+‎
+‎Happy birthday once again, my baby girl. I love you more than I can ever fully explain 💫!</p>
+‎</section>
+‎
+‎<!-- Footer -->
+‎<footer>With love, for My sweetheart ❤️</footer>
+‎
+‎<!-- Background Music -->
+‎<audio id="bg-music" src="MUSIC.mp3" loop></audio>
+‎
+‎<!-- Music Prompt -->
+‎<div id="music-prompt" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:1000;color:#fff;font-size:1.5rem;text-align:center;">
+‎  Click anywhere to start the music 🎵
+‎</div>
+‎<div id="floating-panel">
+‎<button id="music-control" class="floating-btn">🎵 Play Music</button>
+‎<a href="https://wa.me/2349138174004" target="_blank" class="floating-btn">
+‎<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+‎Chat on WhatsApp
+‎</a>
+‎</div>
+‎
+‎<script>
+‎/* ---------- THEME TOGGLE ---------- */
+‎const themeToggle = document.getElementById('themeToggle');
+‎const html = document.documentElement;
+‎
+‎const currentTheme = localStorage.getItem('theme') || 'light';
+‎html.classList.toggle('dark-mode', currentTheme === 'dark');
+‎updateThemeButton();
+‎
+‎themeToggle.addEventListener('click', () => {
+‎  html.classList.toggle('dark-mode');
+‎  const theme = html.classList.contains('dark-mode') ? 'dark' : 'light';
+‎  localStorage.setItem('theme', theme);
+‎  updateThemeButton();
+‎});
+‎
+‎function updateThemeButton() {
+‎  const isDarkMode = html.classList.contains('dark-mode');
+‎  themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+‎}
+‎
+‎/* ---------- HAMBURGER MENU ---------- */
+‎const hamburger = document.getElementById('hamburger');
+‎const navMenu = document.getElementById('nav-menu');
+‎
+‎hamburger.addEventListener('click', () => {
+‎  navMenu.classList.toggle('active');
+‎  hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+‎});
+‎
+‎document.querySelectorAll('nav a').forEach(link => {
+‎  link.addEventListener('click', () => {
+‎    navMenu.classList.remove('active');
+‎    hamburger.setAttribute('aria-expanded', false);
+‎  });
+‎});
+‎
+‎document.addEventListener('click', (e) => {
+‎  if (!e.target.closest('header') && !e.target.closest('nav')) {
+‎    navMenu.classList.remove('active');
+‎    hamburger.setAttribute('aria-expanded', false);
+‎  }
+‎});
+‎
+‎/* ---------- MUSIC CONTROL ---------- */
+‎const music = document.getElementById('bg-music');
+‎const musicBtn = document.getElementById('music-control');
+‎const musicPrompt = document.getElementById('music-prompt');
+‎let playing = false;
+‎
+‎// Wait for user interaction to play music
+‎document.addEventListener('click', () => {
+‎  if (!playing) {
+‎    music.play().then(() => {
+‎      playing = true;
+‎      musicBtn.textContent = "🎵 Pause Music";
+‎      musicPrompt.style.display = 'none';
+‎    }).catch(err => {
+‎      console.log('Music play failed:', err);
+‎    });
+‎  }
+‎}, { once: true });
+‎
+‎musicBtn.addEventListener('click', () => {
+‎  if (!playing) {
+‎    music.play();
+‎    musicBtn.textContent = "🎵 Pause Music";
+‎    playing = true;
+‎  } else {
+‎    music.pause();
+‎    musicBtn.textContent = "🎵 Play Music";
+‎    playing = false;
+‎  }
+‎});
+‎
+‎/* ---------- SMOOTH SCROLL & ANIMATIONS ---------- */
+‎document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+‎  anchor.addEventListener('click', function (e) {
+‎    const href = this.getAttribute('href');
+‎    if (href !== '#' && document.querySelector(href)) {
+‎      e.preventDefault();
+‎      document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+‎    }
+‎  });
+‎});
+‎
+‎/* ---------- INTERSECTION OBSERVER FOR ANIMATIONS ---------- */
+‎const observerOptions = {
+‎  threshold: 0.1,
+‎  rootMargin: '0px 0px -100px 0px'
+‎};
+‎
+‎const observer = new IntersectionObserver(function(entries) {
+‎  entries.forEach(entry => {
+‎    if (entry.isIntersecting) {
+‎      entry.target.style.opacity = '1';
+‎      entry.target.style.transform = 'translateY(0)';
+‎    }
+‎  });
+‎}, observerOptions);
+‎
+‎document.querySelectorAll('section').forEach(el => {
+‎  el.style.opacity = '0';
+‎  el.style.transform = 'translateY(20px)';
+‎  el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+‎  observer.observe(el);
+‎});
+‎</script>
+‎
+‎</body>
+‎</html>
+‎
