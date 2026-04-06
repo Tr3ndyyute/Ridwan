@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zinni Premium ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#ff4081;
+  --bg:#0f0f0f;
+  --glass:rgba(255,255,255,0.08);
+  --text:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(120deg,#0f0f0f,#1a1a1a);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  backdrop-filter:blur(20px);
+  background:var(--glass);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* HERO */
+#home{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+
+.glow{
+  font-size:3.5rem;
+  background:linear-gradient(90deg,#ff4081,#ff80ab);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+  from{filter:drop-shadow(0 0 10px #ff4081);}
+  to{filter:drop-shadow(0 0 30px #ff80ab);}
+}
+
+.card{
+  background:var(--glass);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(25px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* BUTTON */
+.btn{
+  margin-top:20px;
+  display:inline-block;
+  padding:12px 25px;
+  border-radius:30px;
+  background:var(--primary);
+  color:#fff;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+}
+
+/* SECTION */
+section{
+  padding:100px 20px;
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+}
+
+/* TYPING EFFECT */
+.typing{
+  border-right:2px solid #fff;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+/* FLOAT BUTTON */
+.float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+}
+
+.float button{
+  padding:15px;
+  border:none;
+  border-radius:50px;
+  background:var(--primary);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div>Zinni ❤️</div>
+</nav>
+
+<section id="home">
+<div class="card">
+<h1 class="glow">Ife mi ❤️</h1>
+<p class="typing" id="typingText"></p>
+<a href="#about" class="btn">Open Message</a>
+</div>
+</section>
+
+<section id="about">
+<h2>To My Sweetheart</h2>
+<p>
+Happy birthday my baby girl ❤️<br><br>
+You are my peace, my happiness, my favorite human.<br><br>
+Every moment with you feels like magic.<br><br>
+I love you endlessly 💫
+</p>
+</section>
+
+<div class="float">
+<button onclick="toggleMusic()">🎵</button>
+</div>
+
+<audio id="music" src="MUSIC.mp3" loop></audio>
+
+<script>
+// Typing effect
+const text = "My Favorite Person in the World...";
+let i = 0;
+function type(){
+  if(i < text.length){
+    document.getElementById("typingText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 50);
+  }
+}
+type();
+
+// Music
+const music = document.getElementById("music");
+let play = false;
+function toggleMusic(){
+  if(!play){ music.play(); play=true; }
+  else{ music.pause(); play=false; }
+}
+</script>
+
+</body>
+</html>
